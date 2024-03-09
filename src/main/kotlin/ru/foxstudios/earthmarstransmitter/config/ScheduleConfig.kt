@@ -20,7 +20,8 @@ class ScheduleConfig(@Autowired var repository : IDataRepository) {
         val mapper = ObjectMapper().registerKotlinModule()
         for (elem in list){
             val text = mapper.writeValueAsString(elem)
-            val client = UdpClient.create().port(25578).host("host.docker.internal").wiretap(true).connectNow()
+            //"host.docker.internal"
+            val client = UdpClient.create().port(25578).host(System.getenv("MARS_IP")).wiretap(true).connectNow()
             client.outbound().sendString(Mono.just(text)).then().subscribe()
             client.inbound().receive().asString().doOnNext{next ->
                 if(next == "ok"){
