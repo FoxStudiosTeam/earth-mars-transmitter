@@ -7,4 +7,4 @@ LABEL authors="xxlegendzxx22"
 WORKDIR /earth-mars-transmitter
 COPY . /earth-mars-transmitter
 RUN gradle bootJar
-ENTRYPOINT ["java","-XX:+UseZGC","-Dotel.instrumentation.tomcat.enabled=false", "-jar", "/earth-mars-transmitter/build/libs/earth-mars-transmitter-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-XX:+UseZGC","-jar", "/earth-mars-transmitter/build/libs/earth-mars-transmitter-0.0.1-SNAPSHOT.jar"]
