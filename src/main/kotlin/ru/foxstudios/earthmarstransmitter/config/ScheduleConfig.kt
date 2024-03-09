@@ -16,7 +16,7 @@ class ScheduleConfig(@Autowired var repository : IDataRepository) {
         val logger = LoggerFactory.getLogger(this.javaClass)
         val list = repository.findAllBySended(false)
         for (elem in list){
-            val client = UdpClient.create().port(25578).host("127.0.0.1").wiretap(true).connectNow()
+            val client = UdpClient.create().port(25578).host("host.docker.internal").wiretap(true).connectNow()
             client.outbound().sendObject(elem).then().subscribe()
             client.inbound().receive().asString().doOnNext{next ->
                 if(next == "ok"){
