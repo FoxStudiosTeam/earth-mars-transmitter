@@ -1,1 +1,1 @@
-CREATE TABLE schedule (uuid varchar(64), speed float, "from" varchar(128), "to" varchar(128), "sended" bool)
+CREATE TABLE schedule (uuid varchar(64), speed float, fromD varchar(128), toD varchar(128), "sended" bool)
